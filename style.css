@@ -1,0 +1,9 @@
+body { margin:0; font-family:system-ui, sans-serif; }
+h1 { margin:0; padding:0.5rem 1rem; background:#2d3e50; color:#fff; font-size:1.2rem; }
+#locate-btn { position:absolute; top:60px; left:10px; z-index:1000; background:#2d3e50; color:#fff; border:none; padding:0.4rem 0.8rem; border-radius:4px; }
+#container { display:flex; flex-direction:row; height:calc(100vh - 60px); }
+#map { flex:2; min-height:100%; }
+#itinerary { flex:1; padding:1rem; overflow-y:auto; background:#f9f9f9; }
+#itinerary ul { padding-left:1rem; }
+#itinerary li { margin-bottom:0.8rem; }
+@media(max-width:600px){ #container{ flex-direction:column;} #map{ height:50vh;} }
