@@ -10,6 +10,29 @@ h1 { margin:0; padding:0.5rem 1rem; background:#1976d2; color:#fff; font-size:1.
 #itinerary li:hover { color:#0066cc; }
 #itinerary li .gmap-link { margin-left:0.4rem; font-size:0.8rem; text-decoration:none; }
 #itinerary li .gmap-link:hover { text-decoration:underline; }
+<
+ul.quick-list {
+  display:flex;
+  gap:0.5rem;
+  padding-left:0;
+  list-style:none;
+  margin-bottom:1rem;
+  flex-wrap:wrap;
+}
+
+.quick-list li {
+  background:#1976d2;
+  color:#fff;
+  padding:0.25rem 0.6rem;
+  border-radius:999px;
+  text-decoration:none;
+}
+
+.quick-list li:hover {
+  background:#0b60b0;
+}
+
+ 
  
 @media (max-width:600px) {
   #container {
@@ -50,4 +73,5 @@ body.dark #theme-btn {
 
 body.dark pre { background:#333; }
 body.dark a { color:#80bfff; }
+body.dark .quick-list li { background:#444; }
  
