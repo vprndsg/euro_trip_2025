@@ -13,9 +13,12 @@ h1 { margin:0; padding:0.5rem 1rem; background:#2d3e50; color:#fff; font-size:1.
   }
   #map {
     height: 50vh;
+        min-height: 50vh;
+        flex: none;
   }
 }
 pre {
+  
   white-space: pre-wrap;
   font-family: inherit;
 }
