@@ -20,3 +20,15 @@ map.on('locationerror', e => alert('Location unavailable: ' + e.message));
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('service-worker.js');
 }
+
+document.getElementById('theme-btn').addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});
+
+document.querySelectorAll('#locations li').forEach(li => {
+  li.addEventListener('click', () => {
+    const lat = parseFloat(li.dataset.lat);
+    const lng = parseFloat(li.dataset.lng);
+    map.setView([lat, lng], 10);
+  });
+});
