@@ -15,7 +15,9 @@ export default function App() {
   return (
     <div className="w-screen h-screen relative">
       <MapView stops={stops} />
-      {open && <ItineraryBottomSheet stops={stops} onClose={() => setOpen(false)} />}
+      {open && (
+        <ItineraryBottomSheet stops={stops} onClose={() => setOpen(false)} />
+      )}
     </div>
   );
 }
