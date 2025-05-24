@@ -5,11 +5,17 @@ h1 { margin:0; padding:0.5rem 1rem; background:#2d3e50; color:#fff; font-size:1.
 #container { display:flex; flex-direction:row; height:calc(100vh - 60px); }
 #map { flex:2; min-height:100%; }
 #itinerary { flex:1; padding:1rem; overflow-y:auto; background:#f9f9f9; }
-#itinerary ul { padding-left:1rem; list-style:none; }
+<#itinerary ul { padding-left:1rem; list-style:none; }
 #itinerary li { margin-bottom:0.8rem; cursor:pointer; text-decoration:underline; }
 #itinerary li:hover { color:#0066cc; }
 #itinerary li .gmap-link { margin-left:0.4rem; font-size:0.8rem; text-decoration:none; }
 #itinerary li .gmap-link:hover { text-decoration:underline; }
+
+#itinerary ul { padding-left:1rem; }
+#locations { list-style:none; padding-left:0; }
+#itinerary li { margin-bottom:0.8rem; cursor:pointer; text-decoration:underline; }
+#itinerary li:hover { color:#0066cc; }
+ 
 @media (max-width:600px) {
   #container {
     flex-direction: column;
@@ -46,4 +52,7 @@ body.dark #locate-btn,
 body.dark #theme-btn {
   background:#444;
 }
+
 body.dark pre { background:#333; }
+body.dark a { color:#80bfff; }
+ 

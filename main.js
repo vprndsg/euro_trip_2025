@@ -34,14 +34,16 @@ if('serviceWorker' in navigator){
   navigator.serviceWorker.register('service-worker.js');
 }
 
-const themeKey = 'theme';
-if(localStorage.getItem(themeKey)==='dark'){
+
+const themeBtn = document.getElementById('theme-btn');
+const savedTheme = localStorage.getItem('theme');
+if(savedTheme === 'dark'){
   document.body.classList.add('dark');
 }
+themeBtn.addEventListener('click', () => {
+  const dark = document.body.classList.toggle('dark');
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
 
-document.getElementById('theme-btn').addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  localStorage.setItem(themeKey, document.body.classList.contains('dark') ? 'dark' : 'light');
 });
 
 document.querySelectorAll('#locations li').forEach(li => {
@@ -51,7 +53,7 @@ document.querySelectorAll('#locations li').forEach(li => {
     map.setView([lat, lng], 10);
   });
   li.addEventListener('keydown', e => {
-    if(e.key==='Enter' || e.key===' '){
+ i   if(e.key==='Enter' || e.key===' '){
       li.click();
     }
   });
@@ -59,4 +61,4 @@ document.querySelectorAll('#locations li').forEach(li => {
   if(link){
     link.addEventListener('click', e => e.stopPropagation());
   }
-});
+=;
