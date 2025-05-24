@@ -6,7 +6,15 @@ h1 { margin:0; padding:0.5rem 1rem; background:#2d3e50; color:#fff; font-size:1.
 #itinerary { flex:1; padding:1rem; overflow-y:auto; background:#f9f9f9; }
 #itinerary ul { padding-left:1rem; }
 #itinerary li { margin-bottom:0.8rem; }
-@media(max-width:600px){ #container{ flex-direction:column;} #map{ height:50vh;} }
+@media (max-width:600px) {
+  #container {
+    flex-direction: column;
+    height: auto;
+  }
+  #map {
+    height: 50vh;
+  }
+}
 pre {
   white-space: pre-wrap;
   font-family: inherit;
