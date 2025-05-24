@@ -10,7 +10,7 @@ h1 { margin:0; padding:0.5rem 1rem; background:#1976d2; color:#fff; font-size:1.
 #itinerary li:hover { color:#0066cc; }
 #itinerary li .gmap-link { margin-left:0.4rem; font-size:0.8rem; text-decoration:none; }
 #itinerary li .gmap-link:hover { text-decoration:underline; }
-
+<
 ul.quick-list {
   display:flex;
   gap:0.5rem;
@@ -31,6 +31,8 @@ ul.quick-list {
 .quick-list li:hover {
   background:#0b60b0;
 }
+
+ 
  
 @media (max-width:600px) {
   #container {
