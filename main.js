@@ -46,19 +46,22 @@ themeBtn.addEventListener('click', () => {
 
 });
 
-document.querySelectorAll('#locations li').forEach(li => {
+document.querySelectorAll('#itinerary li').forEach(li => {
   li.addEventListener('click', () => {
     const lat = parseFloat(li.dataset.lat);
     const lng = parseFloat(li.dataset.lng);
     map.setView([lat, lng], 10);
   });
+
   li.addEventListener('keydown', e => {
- i   if(e.key==='Enter' || e.key===' '){
+    if (e.key === 'Enter' || e.key === ' ') {
       li.click();
     }
   });
+
   const link = li.querySelector('.gmap-link');
-  if(link){
+  if (link) {
     link.addEventListener('click', e => e.stopPropagation());
   }
-=;
+});
+
