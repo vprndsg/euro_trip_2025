@@ -11,8 +11,21 @@ vi.mock('mapbox-gl', () => {
       addSource() {}
       addLayer() {}
       fitBounds() {}
+      flyTo() {}
     },
-    NavigationControl: class {}
+    NavigationControl: class {},
+    Marker: class {
+      setLngLat() { return this; }
+      setPopup() { return this; }
+      addTo() { return this; }
+      getElement() { return document.createElement('div'); }
+      getLngLat() { return [0, 0]; }
+      togglePopup() {}
+    },
+    Popup: class {
+      constructor() {}
+      setText() { return this; }
+    }
   };
 });
 
@@ -24,6 +37,8 @@ const stops: Stop[] = [
 ];
 
 test('polyline has four coordinates', () => {
-  render(<MapView stops={stops} />);
+  render(
+    <MapView stops={stops} activeId={null} onMarkerClick={() => {}} />
+  );
   expect(stops.length).toBe(4);
 });
