@@ -8,7 +8,14 @@ const stops: Stop[] = [
 ];
 
 test('renders city names and dates', () => {
-  render(<ItineraryBottomSheet stops={stops} onClose={() => {}} />);
+  render(
+    <ItineraryBottomSheet
+      stops={stops}
+      activeId={null}
+      onSelect={() => {}}
+      onClose={() => {}}
+    />
+  );
   expect(screen.getByText('Berlin')).toBeInTheDocument();
   expect(screen.getByText('Bern')).toBeInTheDocument();
   expect(screen.getAllByText(/2025/).length).toBe(2);

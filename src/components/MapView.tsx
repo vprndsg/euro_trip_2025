@@ -5,12 +5,17 @@ import { UI } from '../ui';
 
 mapboxgl.accessToken = 'pk.INSERT_TOKEN';
 
-type Props = { stops: Stop[] };
+type Props = {
+  stops: Stop[];
+  activeId: number | null;
+  onMarkerClick: (id: number) => void;
+};
 
 /** Mapbox map showing the route polyline. */
-export default function MapView({ stops }: Props) {
+export default function MapView({ stops, activeId, onMarkerClick }: Props) {
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const markersRef = useRef<Record<number, mapboxgl.Marker>>({});
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
@@ -45,9 +50,26 @@ export default function MapView({ stops }: Props) {
           'line-width': 4
         }
       });
+      stops.forEach(s => {
+        const marker = new mapboxgl.Marker()
+          .setLngLat(s.coords)
+          .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(s.city))
+          .addTo(map);
+        marker.getElement().addEventListener('click', () => onMarkerClick(s.id));
+        markersRef.current[s.id] = marker;
+      });
       fit();
     });
   }, [stops]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || activeId == null) return;
+    const marker = markersRef.current[activeId];
+    if (!marker) return;
+    map.flyTo({ center: marker.getLngLat(), zoom: 6 });
+    marker.togglePopup();
+  }, [activeId]);
 
   const fit = () => {
     const map = mapRef.current;

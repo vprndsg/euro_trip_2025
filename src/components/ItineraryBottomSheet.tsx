@@ -6,11 +6,18 @@ import { UI } from '../ui';
 
 type Props = {
   stops: Stop[];
+  activeId: number | null;
+  onSelect: (id: number) => void;
   onClose: () => void;
 };
 
 /** Draggable bottom sheet displaying the itinerary. */
-export default function ItineraryBottomSheet({ stops, onClose }: Props) {
+export default function ItineraryBottomSheet({
+  stops,
+  activeId,
+  onSelect,
+  onClose
+}: Props) {
   const y = useMotionValue(0);
   const dragConstraints = { top: -400, bottom: 0 };
   const ref = useRef<HTMLDivElement>(null);
@@ -36,7 +43,14 @@ export default function ItineraryBottomSheet({ stops, onClose }: Props) {
       </div>
       <ul className="px-4 pb-4 space-y-2">
         {stops.map((stop, i) => (
-          <li key={stop.id} className="flex items-start gap-2">
+          <li
+            key={stop.id}
+            onClick={() => onSelect(stop.id)}
+            className={
+              `flex items-start gap-2 cursor-pointer border-l-4 pl-2 ` +
+              (stop.id === activeId ? 'border-blue-500 bg-blue-50' : 'border-transparent')
+            }
+          >
             <div className="flex flex-col items-center">
               <span
                 className="rounded-full bg-blue-500 text-white flex items-center justify-center text-sm"
