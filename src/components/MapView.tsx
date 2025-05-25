@@ -3,7 +3,10 @@ import mapboxgl from 'mapbox-gl';
 import { Stop } from '../types';
 import { UI } from '../ui';
 
-mapboxgl.accessToken = 'pk.INSERT_TOKEN';
+// Use a Vite environment variable so the API token can be provided at build time
+// without committing secrets to the repository.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+mapboxgl.accessToken = (import.meta as any).env.VITE_MAPBOX_TOKEN || '';
 
 type Props = {
   stops: Stop[];
