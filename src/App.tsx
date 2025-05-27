@@ -11,6 +11,13 @@ export default function App() {
   const [activeId, setActiveId] = useState<number | null>(null);
   return (
     <div className="w-screen h-screen relative">
+      <button
+        type="button"
+        className="absolute top-0 left-0 right-0 bg-blue-500 text-white text-center py-2 cursor-pointer z-10"
+        onClick={() => setActiveId(1)}
+      >
+        Day 1-2 : fly to Berlin
+      </button>
       <MapView
         stops={stops}
         activeId={activeId}
