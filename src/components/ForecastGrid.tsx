@@ -1,9 +1,10 @@
 import React from 'react';
+import { IconProps } from '../icons';
 
 export type DayForecast = {
   day: string;
   condition: string;
-  icon: string;
+  Icon: React.ComponentType<IconProps>;
 };
 
 type Props = {
@@ -21,7 +22,7 @@ export default function ForecastGrid({ forecast }: Props) {
           <div className="font-semibold mb-1">{f.day}</div>
           <div className="flex items-center justify-center gap-1 text-gray-700">
             <span className="text-base" aria-hidden="true">
-              {f.icon}
+              <f.Icon className="w-6 h-6" />
             </span>
             <span>{f.condition}</span>
           </div>

@@ -5,6 +5,7 @@ import { UI } from '../ui';
 import TravelCard from './TravelCard';
 import ForecastGrid, { DayForecast } from './ForecastGrid';
 import LiveMapButton from './LiveMapButton';
+import { CloudRainIcon, SunIcon, CloudIcon, XIcon } from '../icons';
 
 type Props = {
   stops: Stop[];
@@ -24,9 +25,9 @@ export default function ItineraryBottomSheet({
   const dragConstraints = { top: -400, bottom: 0 };
   const ref = useRef<HTMLDivElement>(null);
   const forecast: DayForecast[] = [
-    { day: 'Mon', condition: 'Rain', icon: '☔️' },
-    { day: 'Tue', condition: 'Sunny', icon: '☀️' },
-    { day: 'Wed', condition: 'Cloudy', icon: '☁️' }
+    { day: 'Mon', condition: 'Rain', Icon: CloudRainIcon },
+    { day: 'Tue', condition: 'Sunny', Icon: SunIcon },
+    { day: 'Wed', condition: 'Cloudy', Icon: CloudIcon }
   ];
 
   return (
@@ -44,7 +45,9 @@ export default function ItineraryBottomSheet({
      
           <div className="flex justify-between items-center p-4">
     <h2 className="text-2xl font-semibold tracking-tight">Itinerary</h2>
-    <button onClick={onClose} className="text-xl">x</button>
+    <button onClick={onClose} className="text-xl">
+      <XIcon className="w-6 h-6" />
+    </button>
   </div>
 <img src="/alps.jpg" alt="Alps" className="w-full aspect-video object-cover rounded-t-sheet" />
       <div className="card">
