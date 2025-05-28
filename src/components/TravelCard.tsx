@@ -16,7 +16,7 @@ export default function TravelCard({ stop, index, active, last, onSelect }: Trav
     <li
       onClick={() => onSelect(stop.id)}
       className={
-        `relative pl-3 pr-2 py-2 flex items-start gap-2 cursor-pointer before:content-[''] before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:rounded-r ` +
+        `relative pl-3 pr-2 py-2 flex items-start gap-2 cursor-pointer before:content-[''] before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:rounded-r rounded-lg bg-white shadow-lg shadow-slate-900/30 ` +
         (active ? 'before:bg-blue-500 bg-blue-50' : 'before:bg-gray-200')
       }
     >

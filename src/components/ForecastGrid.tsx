@@ -16,7 +16,7 @@ export default function ForecastGrid({ forecast }: Props) {
       {forecast.map(f => (
         <div
           key={f.day}
-          className="rounded-xl shadow-inner bg-white p-2 text-center text-sm"
+          className="rounded-xl shadow bg-white p-2 text-center text-sm"
         >
           <div className="font-semibold mb-1">{f.day}</div>
           <div className="flex items-center justify-center gap-1 text-gray-700">
