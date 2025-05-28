@@ -49,7 +49,7 @@ export default function MapView({ stops, activeId, onMarkerClick }: Props) {
         type: 'line',
         source: 'route',
         paint: {
-          'line-color': '#1c7dff',
+          'line-color': '#0ea5e9',
           'line-width': 4
         }
       });
