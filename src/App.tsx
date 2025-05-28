@@ -20,6 +20,7 @@ export default function App() {
         Day&nbsp;1-2 : fly to Berlin
       </button>
 
+
       <MapView
         stops={stops}
         activeId={activeId}
@@ -34,6 +35,10 @@ export default function App() {
           onClose={() => setOpen(false)}
         />
       )}
+
+      />
+    )}
+
     </div>
   );
 }

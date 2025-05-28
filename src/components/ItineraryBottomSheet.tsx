@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import dayjs from 'dayjs';
 import { Stop } from '../types';
 import { UI } from '../ui';
+import { normalizeTime } from '../time';
 
 type Props = {
   stops: Stop[];
@@ -32,14 +33,25 @@ export default function ItineraryBottomSheet({
       transition={{ type: 'spring', duration: 0.04 }}
       className="fixed bottom-0 left-1/2 -translate-x-1/2 bg-white shadow-md rounded-sheet"
     >
-      <div className="card flex justify-between items-center">
-        <h2 className="text-2xl font-semibold">Itinerary</h2>
-        <button onClick={onClose} className="text-xl">×</button>
-      </div>
-      <img src="/alps.jpg" alt="Alps" className="w-full aspect-video object-cover rounded-t-sheet" />
+
+
+     
+          <div className="flex justify-between items-center p-4">
+    <h2 className="text-2xl font-semibold tracking-tight">Itinerary</h2>
+    <button onClick={onClose} className="text-xl">x</button>
+  </div>
+<img src="/alps.jpg" alt="Alps" className="w-full aspect-video object-cover rounded-t-sheet" />
       <div className="card">
         <h3 className="text-lg font-bold">Swiss Alps</h3>
         <p className="text-sm text-gray-600">4 days</p>
+
+
+      </div>
+      <img src="/alps.jpg" alt="Alps" className="w-full aspect-video object-cover rounded-t-sheet" />
+        <div className="p-4">
+          <h3 className="text-base font-bold">Swiss Alps</h3>
+          <p className="text-sm text-gray-600">4 days</p>
+
       </div>
       <ul className="px-4 pb-4 space-y-2 pl-2">
         {stops.map((stop, i) => (
@@ -63,9 +75,10 @@ export default function ItineraryBottomSheet({
               )}
             </div>
             <div className="flex-1">
-              <div className="font-bold text-lg">{stop.city}</div>
-              <div className="text-sm text-gray-600">
+              <div className="font-bold text-base">{stop.city}</div>
+              <div className="text-xs text-gray-600">
                 {dayjs(stop.date).format('MMM D')}
+                {stop.time && ` – ${normalizeTime(stop.time)}`}
               </div>
             </div>
           </li>
