@@ -6,9 +6,7 @@ import stopsData from './data/itinerary.json';
 
 const stops: Stop[] = stopsData as Stop[];
 
-export default function App() {
-  const [showItinerary, setShowItinerary] = useState(true);
-  const [activeId, setActiveId] = useState<number | null>(null);
+
   return (
     <div className="w-screen h-screen relative">
       {/* clickable header that jumps to the Berlin stop */}
@@ -26,6 +24,7 @@ export default function App() {
         onMarkerClick={id => setActiveId(id)}
       />
 
+
       <ItineraryBottomSheet
         open={showItinerary}
         stops={stops}
@@ -41,6 +40,7 @@ export default function App() {
         >
           Show Itinerary
         </button>
+
       )}
     </div>
   );

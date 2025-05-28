@@ -5,6 +5,7 @@ import { UI } from '../ui';
 import TravelCard from './TravelCard';
 import ForecastGrid, { DayForecast } from './ForecastGrid';
 import LiveMapButton from './LiveMapButton';
+import DayHeader from './DayHeader';
 
 export type ItineraryBottomSheetProps = {
   open: boolean;
@@ -52,6 +53,7 @@ export default function ItineraryBottomSheet({
     >
       <div className="flex justify-between items-center p-4">
         <h2 className="text-2xl font-semibold tracking-tight">Itinerary</h2>
+
         <button onClick={onClose} className="text-xl">
           ×
         </button>
@@ -77,6 +79,11 @@ export default function ItineraryBottomSheet({
           />
         ))}
       </ul>
+
+        <button onClick={onClose} className="text-xl">x</button>
+      </div>
+      {(() => {
+
       <ForecastGrid forecast={forecast} />
       <div className="px-4 pb-4">
         <LiveMapButton onClick={onClose}>Live Map</LiveMapButton>
