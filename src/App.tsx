@@ -34,21 +34,6 @@ export default function App() {
         onClose={() => setOpen(false)}
       />
     )}
-  </div>
-);
-      <MapView
-        stops={stops}
-        activeId={activeId}
-        onMarkerClick={id => setActiveId(id)}
-      />
-      {open && (
-        <ItineraryBottomSheet
-          stops={stops}
-          activeId={activeId}
-          onSelect={id => setActiveId(id)}
-          onClose={() => setOpen(false)}
-        />
-      )}
     </div>
   );
 }
