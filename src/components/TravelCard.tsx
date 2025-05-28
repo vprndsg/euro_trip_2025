@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { motion } from 'framer-motion';
 import { Stop } from '../types';
 import { normalizeTime } from '../time';
 import GoogleMapsLink from './GoogleMapsLink';
@@ -13,7 +14,10 @@ export type TravelCardProps = {
 
 export default function TravelCard({ stop, index, active, last, onSelect }: TravelCardProps) {
   return (
-    <li
+    <motion.li
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       onClick={() => onSelect(stop.id)}
       className={
         `relative pl-3 pr-2 py-2 flex items-start gap-2 cursor-pointer before:content-[''] before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:rounded-r ` +
@@ -37,6 +41,6 @@ export default function TravelCard({ stop, index, active, last, onSelect }: Trav
         </div>
         <GoogleMapsLink coords={stop.coords} className="mt-1" />
       </div>
-    </li>
+    </motion.li>
   );
 }
