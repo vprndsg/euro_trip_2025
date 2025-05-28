@@ -12,10 +12,10 @@ export default function GoogleMapsLink({ coords, className }: GoogleMapsLinkProp
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-1 hover:text-blue-500 ${className || ''}`.trim()}
+      className={`inline-flex items-center gap-1 group hover:text-blue-500 ${className || ''}`.trim()}
     >
       <span className="sr-only">Open in Google Maps</span>
-      <ExternalLinkIcon className="w-4 h-4" />
+      <ExternalLinkIcon className="w-4 h-4 transition-transform md:group-hover:scale-110" />
     </a>
   );
 }

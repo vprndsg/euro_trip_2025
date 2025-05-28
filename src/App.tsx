@@ -6,9 +6,6 @@ import stopsData from './data/itinerary.json';
 
 const stops: Stop[] = stopsData as Stop[];
 
-export default function App() {
-  const [open, setOpen] = useState(true);
-  const [activeId, setActiveId] = useState<number | null>(null);
 
   return (
     <div className="w-screen h-screen relative">
@@ -27,13 +24,23 @@ export default function App() {
         onMarkerClick={id => setActiveId(id)}
       />
 
-      {open && (
-        <ItineraryBottomSheet
-          stops={stops}
-          activeId={activeId}
-          onSelect={id => setActiveId(id)}
-          onClose={() => setOpen(false)}
-        />
+
+      <ItineraryBottomSheet
+        open={showItinerary}
+        stops={stops}
+        activeId={activeId}
+        onSelect={id => setActiveId(id)}
+        onClose={() => setShowItinerary(false)}
+      />
+
+      {!showItinerary && (
+        <button
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded-sheet"
+          onClick={() => setShowItinerary(true)}
+        >
+          Show Itinerary
+        </button>
+
       )}
     </div>
   );
