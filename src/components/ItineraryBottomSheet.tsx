@@ -33,16 +33,27 @@ export default function ItineraryBottomSheet({
       transition={{ type: 'spring', duration: 0.04 }}
       className="fixed bottom-0 left-1/2 -translate-x-1/2 bg-white shadow-md rounded-sheet"
     >
-        <div className="flex justify-between items-center p-4">
-          <h2 className="text-2xl font-semibold tracking-tight">Itinerary</h2>
-        <button onClick={onClose} className="text-xl">×</button>
+
+
+     
+          <div className="flex justify-between items-center p-4">
+    <h2 className="text-2xl font-semibold tracking-tight">Itinerary</h2>
+    <button onClick={onClose} className="text-xl">x</button>
+  </div>
+<img src="/alps.jpg" alt="Alps" className="w-full aspect-video object-cover rounded-t-sheet" />
+      <div className="card">
+        <h3 className="text-lg font-bold">Swiss Alps</h3>
+        <p className="text-sm text-gray-600">4 days</p>
+
+
       </div>
       <img src="/alps.jpg" alt="Alps" className="w-full aspect-video object-cover rounded-t-sheet" />
         <div className="p-4">
           <h3 className="text-base font-bold">Swiss Alps</h3>
           <p className="text-sm text-gray-600">4 days</p>
+
       </div>
-      <ul className="px-4 pb-4 space-y-2">
+      <ul className="px-4 pb-4 space-y-2 pl-2">
         {stops.map((stop, i) => (
           <li
             key={stop.id}
