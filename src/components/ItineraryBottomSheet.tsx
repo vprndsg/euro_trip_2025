@@ -1,9 +1,10 @@
 import { motion, useMotionValue } from 'framer-motion';
 import { useRef } from 'react';
-import dayjs from 'dayjs';
 import { Stop } from '../types';
 import { UI } from '../ui';
-import { normalizeTime } from '../time';
+import TravelCard from './TravelCard';
+import ForecastGrid, { DayForecast } from './ForecastGrid';
+import LiveMapButton from './LiveMapButton';
 
 type Props = {
   stops: Stop[];
@@ -22,6 +23,11 @@ export default function ItineraryBottomSheet({
   const y = useMotionValue(0);
   const dragConstraints = { top: -400, bottom: 0 };
   const ref = useRef<HTMLDivElement>(null);
+  const forecast: DayForecast[] = [
+    { day: 'Mon', condition: 'Rain', icon: '☔️' },
+    { day: 'Tue', condition: 'Sunny', icon: '☀️' },
+    { day: 'Wed', condition: 'Cloudy', icon: '☁️' }
+  ];
 
   return (
     <motion.div
@@ -55,35 +61,22 @@ export default function ItineraryBottomSheet({
       </div>
       <ul className="px-4 pb-4 space-y-2 pl-2">
         {stops.map((stop, i) => (
-          <li
+          <TravelCard
             key={stop.id}
-            onClick={() => onSelect(stop.id)}
-            className={
-              `flex items-start gap-2 cursor-pointer pl-2 bg-slate-800 text-white border-t border-primary/30 ` +
-              (stop.id === activeId ? 'border-l-4 border-primary' : '')
-            }
-          >
-            <div className="flex flex-col items-center">
-              <span
-                className="rounded-full bg-primary text-white flex items-center justify-center text-sm"
-                style={{ width: UI.badge, height: UI.badge }}
-              >
-                {i + 1}
-              </span>
-              {i < stops.length - 1 && (
-                <span className="h-full border-r-2 border-dashed border-primary/50 grow" />
-              )}
-            </div>
-            <div className="flex-1">
-              <div className="font-bold text-base">{stop.city}</div>
-              <div className="text-xs text-gray-600">
-                {dayjs(stop.date).format('MMM D')}
-                {stop.time && ` – ${normalizeTime(stop.time)}`}
-              </div>
-            </div>
-          </li>
+
+            stop={stop}
+            index={i}
+            active={stop.id === activeId}
+            last={i === stops.length - 1}
+            onSelect={onSelect}
+          />
+
         ))}
       </ul>
+      <ForecastGrid forecast={forecast} />
+      <div className="px-4 pb-4">
+        <LiveMapButton onClick={onClose}>Live Map</LiveMapButton>
+      </div>
     </motion.div>
   );
 }
