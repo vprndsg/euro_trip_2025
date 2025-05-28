@@ -47,19 +47,19 @@ export default function ItineraryBottomSheet({
             key={stop.id}
             onClick={() => onSelect(stop.id)}
             className={
-              `flex items-start gap-2 cursor-pointer border-l-4 pl-2 ` +
-              (stop.id === activeId ? 'border-blue-500 bg-blue-50' : 'border-transparent')
+              `flex items-start gap-2 cursor-pointer pl-2 bg-slate-800 text-white border-t border-primary/30 ` +
+              (stop.id === activeId ? 'border-l-4 border-primary' : '')
             }
           >
             <div className="flex flex-col items-center">
               <span
-                className="rounded-full bg-blue-500 text-white flex items-center justify-center text-sm"
+                className="rounded-full bg-primary text-white flex items-center justify-center text-sm"
                 style={{ width: UI.badge, height: UI.badge }}
               >
                 {i + 1}
               </span>
               {i < stops.length - 1 && (
-                <span className="h-full border-r-2 border-dashed border-blue-200 grow" />
+                <span className="h-full border-r-2 border-dashed border-primary/50 grow" />
               )}
             </div>
             <div className="flex-1">

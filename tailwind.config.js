@@ -4,10 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blue: {
-          200: '#a0c8ff',
-          500: '#1c7dff'
-        }
+        primary: '#0ea5e9',
+        'accent-red': '#dc2626',
+        'accent-green': '#16a34a'
       },
       borderRadius: {
         sheet: '24px'
